@@ -12,7 +12,7 @@ def rag_qa(
     index_path: str,
     meta_path: str,
     chunk_dir: str,
-    llm_api_key: str = "sk-7c68bde882bb4c0096149cf85e9b92a4",
+    llm_api_key: str = none,#replace to your own deepseek api key
     top_k: int = 5,
     alpha: float = 0.7,
     rerank: bool = True,
