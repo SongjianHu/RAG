@@ -1,0 +1,114 @@
+RAG/
+│
+├── data/                           # 原始数据存储
+│   ├── raw/                        # 原始PDF、文档
+│   │   ├── manuals/
+│   │   ├── changes_and_addition/
+│   │   └── test/
+│   ├── processed/                  # 处理后的数据
+│   │   ├── texts/                  # 提取的文本
+│   │   ├── chunks/                 # 分割后的chunks
+│   │   └── structured/             # 结构化数据（表格等）
+│   └── vector_stores/              # 向量数据库文件
+│       ├── faiss_index/
+│       └── metadata/
+│
+├── src/                            # 主要源代码
+│   ├── __init__.py
+│   ├── data_processing/            # 数据处理模块
+│   │   ├── __init__.py
+│   │   ├── pdf_processor.py        # PDF处理
+│   │   ├── text_splitter.py        # 文本分割
+│   │   ├── metadata_extractor.py   # 元数据提取
+│   │   └── structured_extractor.py # 结构化信息提取
+│   │
+│   ├── retrieval/                  # 检索模块
+│   │   ├── __init__.py
+│   │   ├── vector_retriever.py     # 向量检索
+│   │   ├── keyword_retriever.py    # 关键词检索
+│   │   ├── hybrid_retriever.py     # 混合检索
+│   │   ├── reranker.py            # 重排序
+│   │   └── compressor.py          # 结果压缩
+│   │
+│   ├── generation/                 # 生成模块
+│   │   ├── __init__.py
+│   │   ├── prompt_templates.py     # Prompt模板
+│   │   ├── llm_client.py          # LLM客户端（DeepSeek API）
+│   │   └── response_formatter.py   # 响应格式化
+│   │
+│   ├── fine_tuning/               # 微调模块
+│   │   ├── __init__.py
+│   │   ├── data_preparation.py     # 训练数据准备
+│   │   ├── peft_trainer.py        # PEFT训练器
+│   │   └── model_utils.py         # 模型工具
+│   │
+│   ├── evaluation/                # 评估模块
+│   │   ├── __init__.py
+│   │   ├── metrics.py             # 评估指标
+│   │   └── benchmark.py           # 基准测试
+│   │
+│   └── utils/                     # 工具模块
+│       ├── __init__.py
+│       ├── config.py              # 配置管理
+│       ├── logging.py             # 日志工具
+│       └── cache.py               # 缓存工具
+│
+├── api/                           # API接口
+│   ├── __init__.py
+│   ├── main.py                    # FastAPI主程序
+│   ├── routers/                   # 路由模块
+│   │   ├── __init__.py
+│   │   ├── qa.py                  # 问答接口
+│   │   └── health.py              # 健康检查
+│   ├── models/                    # API数据模型
+│   │   ├── __init__.py
+│   │   ├── request.py             # 请求模型
+│   │   └── response.py            # 响应模型
+│   └── middleware/                # 中间件
+│       ├── __init__.py
+│       ├── auth.py                # 认证中间件
+│       └── rate_limit.py          # 限流中间件
+│
+├── scripts/                       # 脚本文件
+│   ├── build_index.py             # 构建索引
+│   ├── evaluate_model.py          # 模型评估
+│   ├── fine_tune.py               # 启动微调
+│   └── deploy.py                  # 部署脚本
+│
+├── configs/                       # 配置文件
+│   ├── config.yaml                # 主配置
+│   ├── model_config.yaml          # 模型配置
+│   ├── retrieval_config.yaml      # 检索配置
+│   └── api_config.yaml            # API配置
+│
+├── tests/                         # 测试文件
+│   ├── __init__.py
+│   ├── test_data_processing.py
+│   ├── test_retrieval.py
+│   ├── test_generation.py
+│   └── test_api.py
+│
+├── notebooks/                     # Jupyter notebooks
+│   ├── data_analysis.ipynb        # 数据分析
+│   ├── model_experiments.ipynb    # 模型实验
+│   └── evaluation_results.ipynb   # 评估结果
+│
+├── docker/                        # Docker相关
+│   ├── Dockerfile
+│   └── docker-compose.yml
+│
+├── docs/                          # 文档
+│   ├── README.md
+│   ├── API.md                     # API文档
+│   ├── DEPLOYMENT.md              # 部署文档
+│   └── EVALUATION.md              # 评估文档
+│
+├── requirements/                  # 依赖文件
+│   ├── base.txt                   # 基础依赖
+│   ├── dev.txt                    # 开发依赖
+│   └── prod.txt                   # 生产依赖
+│
+├── .env.example                   # 环境变量模板
+├── .gitignore
+├── README.md
+└── setup.py                       # 安装脚本 
